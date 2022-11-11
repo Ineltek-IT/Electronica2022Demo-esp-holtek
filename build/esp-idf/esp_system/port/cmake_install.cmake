@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/build/esp-idf/esp_system/port/soc/esp32s3/cmake_install.cmake")
+  include("C:/Users/Francesco/Desktop/EDE_ESP32S3Demo/Electronica2022Demo-esp-holtek/build/esp-idf/esp_system/port/soc/esp32s3/cmake_install.cmake")
 
 endif()
 

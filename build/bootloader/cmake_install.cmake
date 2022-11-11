@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/build/bootloader/esp-idf/cmake_install.cmake")
+  include("C:/Users/Francesco/Desktop/EDE_ESP32S3Demo/Electronica2022Demo-esp-holtek/build/bootloader/esp-idf/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Francesco/Desktop/EDE_ESP32S3Demo/Electronica2022Demo-esp-holtek/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from C:/Users/Francesco/Desktop/EDE_ESP32S3Demo/Electronica2022Demo-esp-holtek/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

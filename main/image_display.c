@@ -31,14 +31,13 @@
 #include "lv_port.h"
 #include "lv_port_fs.h"
 #include "lvgl.h"
-#include "bm32s2031-1.h"
 #include "driver/gpio.h"
 
 
-#define UART_TX_IO 40
-#define UART_RX_IO 41
-#define UART_NUM 1
-#define BUFFER_SIZE 1024
+// #define UART_TX_IO 40
+// #define UART_RX_IO 41
+// #define UART_NUM 1
+// #define BUFFER_SIZE 1024
 #define SENSOR_OUTPUT 38
 
 static const char *TAG = "main";
@@ -192,25 +191,3 @@ static void image_display(void)
  
 }
 
-static void uart_bus_init(){
-
-    /* Configure parameters of an UART driver,
-     * communication pins and install the driver */
-    uart_config_t uart_config = {
-        .baud_rate = BM32S2031_1_BAUDRATE,
-        .data_bits = UART_DATA_8_BITS,
-        .parity    = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
-        .source_clk = UART_SCLK_APB,
-    };
-    // Configure UART parameters
-    ESP_ERROR_CHECK(uart_param_config(UART_NUM_1, &uart_config));
-    ESP_ERROR_CHECK(uart_set_pin(UART_NUM_1, UART_TX_IO, UART_RX_IO, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
-    ESP_ERROR_CHECK(uart_driver_install(UART_NUM_1, BUFFER_SIZE * 2, BUFFER_SIZE * 2, 0, NULL, 0));
-    
-
-    // Configure a temporary buffer for the incoming data
-    uint8_t *data = (uint8_t *) malloc(BUFFER_SIZE);
-
-}

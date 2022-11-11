@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/components/esp-sr
+# Install script for directory: C:/Users/Francesco/Desktop/EDE_ESP32S3Demo/Electronica2022Demo-esp-holtek/components/esp-sr
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
