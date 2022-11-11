@@ -33,34 +33,19 @@
 #include "lvgl.h"
 #include "driver/gpio.h"
 
-
-// #define UART_TX_IO 40
-// #define UART_RX_IO 41
-// #define UART_NUM 1
-// #define BUFFER_SIZE 1024
 #define SENSOR_OUTPUT 38
 
 static const char *TAG = "main";
-const lv_point_t points_array[] =  { {160, 120}};
+const lv_point_t points_array[] =  {{160, 120}};
 static void image_display(void);
-static void uart_bus_init(void);
+
 lv_obj_t * label1;
 lv_obj_t * btn;
 
 static int last_sensor_state;
 
-static lv_style_t style_btn;
 static lv_style_t style_pr;
 static lv_style_t style_def;
-
-// static void IRAM_ATTR gpio_isr_handler(void* arg)
-// {
-//     if (gpio_get_level(SENSOR_OUTPUT) == 0) {  // If button is pressed
-//             lv_label_set_text(label1, "RILEVATO ");
-//         } else {
-//             lv_label_set_text(label1, "Niente Davanti ");
-//     }
-// }
 
 
 bool sensor_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
@@ -69,25 +54,14 @@ bool sensor_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
     if(btn_pr!=last_sensor_state){
         ESP_LOGI(TAG,"Stato cambiato");
         if(btn_pr > 0) {               /*Is there a button press? (E.g. -1 indicated no button was pressed)*/
-            //data->state = LV_INDEV_STATE_REL;  /*Set the pressed state*/
             lv_label_set_text(label1, "FREE");
             lv_obj_clear_state(btn,  LV_STATE_PRESSED );
-            //lv_obj_add_style(btn, &style_btn_released, LV_PART_MAIN | LV_STATE_DEFAULT);
         } else {
-            //data->state = LV_INDEV_STATE_PR; /*Set the released state*/
             lv_label_set_text(label1, "DETECTED");
-            lv_obj_add_state(btn,  LV_STATE_PRESSED );
-           // lv_obj_remove_style_all(btn);  
-           // lv_obj_add_style(btn, &style_btn_pressed, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-            
+            lv_obj_add_state(btn,  LV_STATE_PRESSED );           
         }
         last_sensor_state=btn_pr;
     }
-
-
-
-               /*Save the last button*/
 
     return false;                    /*No buffering now so no more data read*/
 }
@@ -138,7 +112,6 @@ void app_main(void)
     lv_style_init(&style_def);
     lv_style_set_transition(&style_def, &trans_def);
     lv_style_set_bg_color(&style_def, lv_color_hex(0x458b00));
-   // lv_style_set_bg_opa(&style_btn, LV_OPA_50);
     lv_style_set_border_width(&style_def, 2);
     lv_style_set_border_color(&style_def, lv_color_black());
     lv_style_set_radius(&style_def, 200);
@@ -162,17 +135,7 @@ void app_main(void)
     } while (vTaskDelay(1), true);
 }
 
-static void btn_event_cb(lv_event_t *event)
-{
 
-//    if (gpio_get_level(SENSOR_OUTPUT) == 0) {  // If button is pressed
-//             lv_label_set_text(label1, "RILEVATO ");
-//         } else {
-//             lv_label_set_text(label1, "Niente Davanti ");
-//     }
-   
-    
-}
 
 static void image_display(void)
 {
@@ -181,8 +144,6 @@ static void image_display(void)
     lv_obj_set_style_border_width(btn, 0, LV_STATE_DEFAULT);
     lv_obj_align(btn, LV_ALIGN_CENTER, 0, 0);
 
-    //lv_obj_add_style(btn, &style_btn, LV_STATE_DEFAULT);
-    //lv_obj_add_event_cb(btn, btn_event_cb, LV_EVENT_CLICKED, NULL);
     lv_obj_add_style(btn, &style_def, 0);
     lv_obj_add_style(btn, &style_pr, LV_STATE_PRESSED);
     label1 = lv_label_create(btn);
