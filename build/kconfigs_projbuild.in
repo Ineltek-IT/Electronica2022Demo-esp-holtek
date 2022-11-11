@@ -1,0 +1,8 @@
+source "C:/Users/Francesco/esp/esp-idf/components/app_update/Kconfig.projbuild"
+source "C:/Users/Francesco/esp/esp-idf/components/bootloader/Kconfig.projbuild"
+source "C:/Users/Francesco/esp/esp-idf/components/esp_rom/Kconfig.projbuild"
+source "C:/Users/Francesco/esp/esp-idf/components/esptool_py/Kconfig.projbuild"
+source "C:/Users/Francesco/esp/esp-idf/components/partition_table/Kconfig.projbuild"
+source "C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/components/bsp/Kconfig.projbuild"
+source "C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/components/esp-sr/Kconfig.projbuild"
+source "C:/Users/Francesco/Downloads/EDE_ESP32S3Demo/image_display/components/lvgl/Kconfig.projbuild"
