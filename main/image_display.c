@@ -1,10 +1,10 @@
 /**
  * @file image_display.c
- * @brief Display png image with LVGL
+ * @brief BM32S2031
  * @version 0.1
- * @date 2021-10-19
+ * @date 2022-11-11
  * 
- * @copyright Copyright 2021 Espressif Systems (Shanghai) Co. Ltd.
+ * @copyright Copyright 2022 Ineltek Italy S.r.l.
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@
 #include "lvgl.h"
 #include "driver/gpio.h"
 
-#define SENSOR_OUTPUT 38
+#define SENSOR_OUTPUT 38 // pin at which the sensor output is attached to
 
 static const char *TAG = "main";
 const lv_point_t points_array[] =  {{160, 120}};
@@ -48,11 +48,10 @@ static lv_style_t style_pr;
 static lv_style_t style_def;
 
 
-bool sensor_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
-    int btn_pr = gpio_get_level(SENSOR_OUTPUT);     /*Get the ID (0,1,2...) of the pressed button -> there's only one button*/
+void  sensor_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
+    int btn_pr = gpio_get_level(SENSOR_OUTPUT); 
 
-    if(btn_pr!=last_sensor_state){
-        ESP_LOGI(TAG,"Stato cambiato");
+    if(btn_pr!=last_sensor_state){ // Enter only if the state is changed, otherwise it keeps calling the 
         if(btn_pr > 0) {               /*Is there a button press? (E.g. -1 indicated no button was pressed)*/
             lv_label_set_text(label1, "FREE");
             lv_obj_clear_state(btn,  LV_STATE_PRESSED );
@@ -63,7 +62,7 @@ bool sensor_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
         last_sensor_state=btn_pr;
     }
 
-    return false;                    /*No buffering now so no more data read*/
+    //return false;                    /*No buffering now so no more data read*/
 }
 
 
@@ -78,28 +77,23 @@ void app_main(void)
     
 
 
-    // *********************************
-    // *   READING THE SENSOR  indev   *
-    // *********************************
+    // *******************************
+    // *       SENSOR as indev       *
+    // *******************************
 
     lv_indev_drv_t indev_drv;
     lv_indev_drv_init(&indev_drv);      /*Basic initialization*/
-    indev_drv.type = LV_INDEV_TYPE_BUTTON;                 /*See below.*/
-    indev_drv.read_cb =sensor_read;              /*See below.*/
+    indev_drv.type = LV_INDEV_TYPE_BUTTON;  /* Sensor as simple on/off button */
+    indev_drv.read_cb =sensor_read;        
     /*Register the driver in LVGL and save the created input device object*/
     lv_indev_t * my_indev = lv_indev_drv_register(&indev_drv);
     lv_indev_set_button_points(my_indev, points_array);
 
 
-    // ** STYLE
-
-
-
-
-    //*** TRANSITION
+    //*** STYLE and TRANSITION effects
     static const lv_style_prop_t props[] = {LV_STYLE_BG_COLOR, LV_STYLE_BORDER_COLOR, LV_STYLE_BORDER_WIDTH, 0};
-        /* A default transition
-     * Make it fast (100ms) and start with some delay (200 ms)*/
+    /* A default transition
+     * Make it fast (100ms) and start with no delay */
     static lv_style_transition_dsc_t trans_def;
     lv_style_transition_dsc_init(&trans_def, props, lv_anim_path_linear, 100, 0, NULL);
     
@@ -148,7 +142,7 @@ static void image_display(void)
     lv_obj_add_style(btn, &style_pr, LV_STATE_PRESSED);
     label1 = lv_label_create(btn);
     lv_obj_set_align(label1, LV_ALIGN_CENTER); 
-    lv_label_set_text(label1, "Test ");
+    lv_label_set_text(label1, "Initializing");
  
 }
 
