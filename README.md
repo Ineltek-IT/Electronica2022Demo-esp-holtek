@@ -20,9 +20,15 @@ You will need:
 * A few cables
 
 
-For a general getting started brief tutorial you can check here [Get started with Esp-box](https://fbez.github.io/documentation/ESP-Box-getting-started.html). The important thing to notice is that generally you need to copy the components directory in your project or download the dependencies through the component registry, but for sake of easiness, these folders have already been included in this repo. 
+For a general getting started tutorial you can check here [Get started with Esp-box](https://fbez.github.io/documentation/ESP-Box-getting-started.html). The important thing to notice is that generally you need to copy the components directory in your project or download the dependencies through the component registry, but for sake of easiness, these folders have already been included in this repo. Before moving on, go through the tutorial, compile and flash the `image_display` example. 
 
 Solder one end of the cables to the module and connect them as shown in the table above. 
+
+Clone the repo in your system
+```git clone --recursive https://github.com/Ineltek-IT/Electronica2022Demo-esp-holtek.git```
+Move to the `Electronica2022Demo-esp-holtek` directory and open the workspace in vscode. At this point you should be able to call `ESP-IDF: Build, Flash and start monitor on your device`.
+
+At this point you should see the button staying green ("Free") if no object is directly in front of it, while turning red ("Detected") if there something facing it. The typical detection distance is 80cm. 
 
 
 
