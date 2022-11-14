@@ -30,7 +30,7 @@ Move to the `Electronica2022Demo-esp-holtek` directory and open the workspace in
 
 At this point you should see the button staying green ("Free") if no object is directly in front of it, while turning red ("Detected") if there something facing it. The typical detection distance is 80cm. 
 
-
+ 
 ![free_detected](./images/freeDetected.png)
 
 ## How does it work
