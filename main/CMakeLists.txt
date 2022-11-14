@@ -1,6 +1,6 @@
 idf_component_register(
     SRCS
-        "image_display.c"
+        "Electronica2022Demo-esp-holtek.c"
     INCLUDE_DIRS
         "")
 
