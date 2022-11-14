@@ -35,7 +35,7 @@ At this point you should see the button staying green ("Free") if no object is d
 
 ## How does it work
 
-The graphical UI is done through [LVGL](https://lvgl.io/). The sensor is added as an [input device](https://docs.lvgl.io/8/overview/indev.html). 
+The graphical UI is done through [LVGL](https://lvgl.io/). The sensor is added as an [input device](https://docs.lvgl.io/8/overview/indev.html).
 
 ```c
     lv_indev_drv_t indev_drv;
@@ -47,7 +47,25 @@ The graphical UI is done through [LVGL](https://lvgl.io/). The sensor is added a
     lv_indev_set_button_points(my_indev, points_array);
 ```
 
+and to it is given `sensor_read` as a callback function. `sensor_read` reads the output of the sensor and changes the appearance of the button, adding to and removing from it the `PRESSED` property. 
 
+```c
+void  sensor_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
+    int btn_pr = gpio_get_level(SENSOR_OUTPUT); 
+
+    if(btn_pr!=last_sensor_state){ // Enter only if the state is changed, otherwise it keeps calling the 
+        if(btn_pr > 0) {               /*Is the button pressed? If so, add the state PRESSED to it, to see the change in appearance*/
+            lv_label_set_text(label1, "FREE");
+            lv_obj_clear_state(btn,  LV_STATE_PRESSED );
+        } else {
+            lv_label_set_text(label1, "DETECTED");
+            lv_obj_add_state(btn,  LV_STATE_PRESSED );           
+        }
+        last_sensor_state=btn_pr;
+    }
+
+}
+```
 
 
 ## References
