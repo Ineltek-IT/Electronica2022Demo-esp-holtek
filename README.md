@@ -33,6 +33,20 @@ At this point you should see the button staying green ("Free") if no object is d
 
 ![free_detected](./images/freeDetected.png)
 
+## How does it work
+
+The graphical UI is done through [LVGL](https://lvgl.io/). The sensor is added as an [input device](https://docs.lvgl.io/8/overview/indev.html). 
+
+```c
+    lv_indev_drv_t indev_drv;
+    lv_indev_drv_init(&indev_drv);      /*Basic initialization*/
+    indev_drv.type = LV_INDEV_TYPE_BUTTON;  /* Sensor as simple on/off button */
+    indev_drv.read_cb =sensor_read;        
+    /*Register the driver in LVGL and save the created input device object*/
+    lv_indev_t * my_indev = lv_indev_drv_register(&indev_drv);
+    lv_indev_set_button_points(my_indev, points_array);
+```
+
 
 
 
