@@ -6,4 +6,4 @@ set(EXTRA_COMPONENT_DIRS    ../../components)
 
 add_compile_options(-fdiagnostics-color=always)
 
-project(image_display)
+project(Electronica2022Demo)
