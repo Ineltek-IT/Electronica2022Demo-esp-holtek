@@ -70,6 +70,12 @@ void  sensor_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
 The property is linked to a red background and dark red border. 
 
 
+
+## 3d model
+
+The 3d FreeCAD model and the stl files are in the [3d_model folder](./3d_model/).  
+![3d_model](./images/3dmodel.png)
+
 ## References
 * [Get started with Esp-box](https://fbez.github.io/documentation/ESP-Box-getting-started.html)
 * [BM32S2031 Datasheet](https://www.holtek.com/documents/10179/116711/BM32S2031-1v100.pdf)
