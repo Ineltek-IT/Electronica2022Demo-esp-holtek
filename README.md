@@ -1,6 +1,6 @@
 # Demo Espressif/Holtek Electronica 2022 
-This repo containes the files used for the Electronica 2022 trade fair demo.
-The demo is based on an Esp-box which mounts an ESP32-S3-WROOM SoC. The ESP-Box back connector is used to link the three pins as showed in the table below. 
+This repo contains the code and the design files used for the Electronica 2022 trade fair demo.
+The demo is based on an [ESP-Box](https://github.com/espressif/esp-box) which an evk around an [ESP32-S3-WROOM](https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf) module. The ESP-Box back connector is used to link the three pins as showed in the table below. 
 
 |ESP-BOX | BM32S2031 | Description|
 |---|---|---|
@@ -20,7 +20,7 @@ You will need:
 * A few cables
 
 
-For a general getting started tutorial you can check here [Get started with Esp-box](https://fbez.github.io/documentation/ESP-Box-getting-started.html). The important thing to notice is that generally you need to copy the components directory in your project or download the dependencies through the component registry, but for sake of easiness, these folders have already been included in this repo. Before moving on, go through the tutorial, compile and flash the `image_display` example. 
+For a general getting started tutorial you can check here [Get started with Esp-box](https://fbez.github.io/documentation/ESP-Box-getting-started.html). The important thing to notice is that generally you need to copy the components directory in your project or download the dependencies through the component registry. For the sake of easiness, these folders have already been included in this repo. Before moving on, go through the tutorial, compile and flash the `image_display` example. 
 
 Solder one end of the cables to the module and connect them as shown in the table above. 
 
